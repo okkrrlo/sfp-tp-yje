@@ -5,6 +5,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import random
 from buffer.replay_buffer import ReplayBuffer
+from agent.base_agent import BaseAgent
 
 # QNetwork: Q값을 추정하는 심층 신경망
 class QNetwork(nn.Module):
@@ -20,7 +21,7 @@ class QNetwork(nn.Module):
         return self.out(x)
 
 # DQN 에이전트 정의
-class DQNAgent:
+class DQNAgent(BaseAgent):
     def __init__(self, state_dim, action_dim,
                  gamma=DEFAULT_HYPERPARAMS["Gamma"],
                  epsilon=DEFAULT_HYPERPARAMS["Epsilon"],
